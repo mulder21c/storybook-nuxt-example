@@ -1,0 +1,65 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import DefaultButton from './index.vue';
+import { action } from '@storybook/addon-actions';
+import { withA11y } from '@storybook/addon-a11y';
+
+<Meta
+  title="Atoms/Buttons"
+  component={DefaultButton}
+  parameters={withA11y}
+  argTypes={{
+    type: {
+      description: 'value of type attribute for button element',
+      control: {
+        type: `select`,
+        options: [`button`, `submit`, `reset`],
+      },
+    },
+    context: {
+      description: 'to be used context for button element',
+      control: {
+        type: `select`,
+        options: [`default`, `primary`, `secondary`],
+      },
+    },
+  }}
+/>
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: {DefaultButton},
+  methods: {
+    handleClick: action('button clicked'),
+  },
+  template: `
+    <default-button
+      :type="type"
+      :context="context"
+      :isDisabled="isDisabled"
+      :isRoundEdge="isRoundEdge"
+      :isBlock="isBlock"
+      @click.native="handleClick"
+    >
+      a Button
+    </default-button>
+  `,
+});
+
+# Default Button
+
+This is default button component
+
+<Canvas>
+  <Story
+    name="DefaultButton"
+    args = {{
+      type: `button`,
+      isDisabled: false,
+      isRoundEdge: false,
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+</Canvas>
+
+<ArgsTable story="DefaultButton" />

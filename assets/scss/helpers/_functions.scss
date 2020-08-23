@@ -1,0 +1,38 @@
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+@function map-has-keys($map, $keys...) {
+  @each $key in $keys {
+    @if map-has-key($map, $key) {
+      @return true;
+    }
+  }
+  @return false;
+}
+
+
+@function getColor($ColorSet, $Category, $Color, $Type: null ) {
+  $result: #fff;
+
+  @if $Type == null {
+    @if map-has-keys($ColorSet, $Category, $Color) {
+      $result: map-deep-get($ColorSet, $Category, $Color);
+    }
+    @else {
+      @warn "no value could be retrieved from `#{$ColorSet}`. ";
+    }
+  }
+  @else {
+    @if map-has-keys($ColorSet, $Category, $Color, $Type) {
+      $result: map-deep-get($ColorSet, $Category, $Color, $Type);
+    }
+    @else {
+      @warn "no value could be retrieved from `#{$ColorSet}`. ";
+    }
+  }
+  @return $result;
+}

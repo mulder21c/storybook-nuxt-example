@@ -1,0 +1,39 @@
+.btn {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  width: 130px;
+  height: 58px;
+  font-weight: 800;
+  cursor: pointer;
+
+  @each $context, $colorMap in $colorSet {
+    &--#{$context} {
+      background-color: map-get($colorMap, 'normal');
+      color: map-get($colorMap, 'font');
+
+      &:hover,
+      &:focus {
+        background-color: map-get($colorMap, 'hover');
+      }
+      &:active {
+        background-color: map-get($colorMap, 'pressed');
+      }
+      &:disabled {
+        background-color: map-get($colorMap, 'disabled');
+      }
+    }
+  }
+
+  &--round-edge {
+    border-radius: 10px;
+  }
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+}
