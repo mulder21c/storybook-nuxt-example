@@ -2,7 +2,12 @@ import Vue from 'vue';
 import { action } from '@storybook/addon-actions';
 
 Vue.component('nuxt-link', {
-  props: [`to`],
+  props: {
+    to: {
+      type: String,
+      required: true
+    }
+  },
   methods: {
     log() {
       action(`link target`)(this.to);

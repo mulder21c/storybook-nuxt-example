@@ -6,7 +6,7 @@ import { withA11y } from '@storybook/addon-a11y';
 <Meta
   title="Atoms/Buttons"
   component={DefaultButton}
-  parameters={withA11y}
+  decorator={withA11y}
   argTypes={{
     type: {
       description: 'value of type attribute for button element',
@@ -25,7 +25,7 @@ import { withA11y } from '@storybook/addon-a11y';
   }}
 />
 
-export const Template = (args, { argTypes }) => ({
+export const DefaultButtonTemplate = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: {DefaultButton},
   methods: {
@@ -58,7 +58,7 @@ This is default button component
       isRoundEdge: false,
     }}
   >
-    { Template.bind({}) }
+    { DefaultButtonTemplate.bind({}) }
   </Story>
 </Canvas>
 

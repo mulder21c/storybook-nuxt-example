@@ -25,6 +25,7 @@ module.exports = {
           options: {
             additionalData: `
               @import "@/assets/scss/helpers/_functions.scss";
+              @import "@/assets/scss/helpers/_mixins.scss";
               @import "@/assets/scss/modules/_variables.scss";
             `,
           },
