@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import MainPage from './index.vue';
+import store from '@/.storybook/store';
+import { mapGetters } from 'vuex';
+import StoryRouter from 'storybook-vue-router';
+
+<Meta
+  title="Pages/Main"
+  component={MainPage}
+  decorators={[
+    StoryRouter({}, {
+      routes: [
+        {
+          path: `/`,
+          component: MainPage,
+          name: `index`
+        }
+      ]
+    }),
+  ]}
+/>
+
+export const Template = (args) => {
+  return {
+    store,
+    components: {MainPage},
+    computed: {
+      ...mapGetters('navigation', ['mainNavList', 'mainNavHeading'])
+    },
+    template: `
+      <nuxt />
+    `
+  }
+}
+
+# Main Page
+
+<Canvas>
+  <Story
+    name="MainPage"
+  >
+    { Template.bind({}) }
+  </Story>
+</Canvas>

@@ -1,0 +1,47 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import MainTemplate from './index.vue';
+
+<Meta
+  title="Templates/Main"
+  component={MainTemplate}
+  argTypes={{
+    list: {
+      description: 'a set of items consisting of path and label for navigation',
+      control: {
+        type: 'object'
+      }
+    },
+  }}
+/>
+
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: {MainTemplate},
+  template: `
+    <MainTemplate
+      :list="list"
+      :heading-content="headingContent"
+      :visually-hidden-heading="visuallyHiddenHeading" />
+  `
+});
+
+# Navigation
+
+
+<Canvas>
+  <Story
+    name="MainTemplate"
+    args = {{
+      list: [
+        {path: `path1`, label: `링크1`}, {path: `path2`, label: `링크2`}, {path: `path3`, label: `링크3`}
+      ],
+      headingContent: `메인 내비게이션`,
+      visuallyHiddenHeading: false,
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+</Canvas>
+
+<ArgsTable story="MainTemplate" />

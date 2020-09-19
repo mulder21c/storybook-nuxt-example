@@ -1,19 +1,25 @@
+
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
 import LinksGroup from './index.vue';
 import { action } from '@storybook/addon-actions';
-import { withA11y } from '@storybook/addon-a11y';
 
 <Meta
   title="Molecules/Links"
   component={LinksGroup}
-  parameters={withA11y}
   argTypes={{
-    navList: {
-      description: '',
+    linkList: {
+      description: 'a set of items consisting of path and label',
       control: {
         type: `object`
-      },
+      }
     },
+    wrapper: {
+      description: 'wrapper HTML element',
+      control: {
+        type: `select`,
+        options: ['div', 'nav']
+      }
+    }
   }}
 />
 
@@ -22,8 +28,8 @@ export const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: {LinksGroup},
   template: `
-    <links-group :nav-list="navList" />
-  `,
+    <links-group :link-list="linkList" :wrapper="wrapper" />
+  `
 });
 
 # Liks Group
@@ -34,9 +40,10 @@ Example for using `<nuxt-link>` in storybook
   <Story
     name="LinksGroup"
     args = {{
-      navList: [
+      linkList: [
         {path: `path1`, label: `링크1`}, {path: `path2`, label: `링크2`}
       ],
+      wrapper: 'div'
     }}
   >
     { Template.bind({}) }
