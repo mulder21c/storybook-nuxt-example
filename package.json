@@ -11,7 +11,7 @@
     "lint": "yarn lint:js",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.0",

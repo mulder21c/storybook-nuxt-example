@@ -1,0 +1,28 @@
+language: node_js
+
+node_js:
+- "lts/*"
+
+before_script:
+- yarn build-storybook
+
+stages:
+- Deploy
+
+jobs:
+  fast_finish: true
+  allow_failures:
+    - env: ALLOW_FAILURE=true
+
+  include:
+    - stage: Deploy
+      if: branch = master AND type != pull_request
+      script: skip
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github-token: $GH_TOKEN
+        local_dir: storybook-static
+        target_branch: gh-pages
+        on:
+          branch: master

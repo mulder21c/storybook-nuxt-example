@@ -22,7 +22,7 @@ export const Template = (args, { argTypes }) => ({
     <MainTemplate
       :list="list"
       :heading-content="headingContent"
-      :visually-hidden-heading="visuallyHiddenHeading" />
+      :is-visually-hidden-heading="isVisuallyHiddenHeading" />
   `
 });
 
@@ -37,7 +37,7 @@ export const Template = (args, { argTypes }) => ({
         {path: `path1`, label: `링크1`}, {path: `path2`, label: `링크2`}, {path: `path3`, label: `링크3`}
       ],
       headingContent: `메인 내비게이션`,
-      visuallyHiddenHeading: false,
+      isVisuallyHiddenHeading: false,
     }}
   >
     { Template.bind({}) }
