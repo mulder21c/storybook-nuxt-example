@@ -3,27 +3,25 @@ const rootPath = path.resolve(__dirname, `../`);
 
 module.exports = {
   stories: [
-    `../components/**/*.stories.mdx`,
-    `../components/**/*.stories.@(js|jsx|ts|tsx)`,
-    `../pages/**/*.stories.mdx`,
-    `../pages/**/*.stories.@(js|jsx|ts|tsx)`,
+    `../components/**/*.stories.@(js|jsx|ts|tsx|mdx)`,
+    `../pages/**/*.stories.@(js|jsx|ts|tsx|mdx)`,
   ],
   addons: [
     `@storybook/addon-links`,
     `@storybook/addon-essentials`,
     `@storybook/addon-a11y`,
   ],
-  webpackFinal: async (config, { configType }) => {
-    config.resolve.alias['@'] = rootPath;
-    config.resolve.alias['~'] = rootPath;
+  webpackFinal: async (config) => {
+    config.resolve.alias[`@`] = rootPath;
+    config.resolve.alias[`~`] = rootPath;
 
     config.module.rules.push({
       test: /\.scss$/,
       use: [
-        'style-loader',
-        'css-loader',
+        `style-loader`,
+        `css-loader`,
         {
-          loader: 'sass-loader',
+          loader: `sass-loader`,
           options: {
             additionalData: `
               @import "@/assets/scss/helpers/_functions.scss";
@@ -33,7 +31,7 @@ module.exports = {
           },
         }
       ],
-      include: path.resolve(__dirname, '../'),
+      include: path.resolve(__dirname, `../`),
     });
 
     return config;

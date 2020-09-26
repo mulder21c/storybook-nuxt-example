@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 Vue.use(Vuex);
 
-Vue.component('nuxt-link', {
+Vue.component(`nuxt-link`, {
   props: {
     to: {
       type: String,
@@ -16,14 +16,13 @@ Vue.component('nuxt-link', {
       action(`link target`)(this.to);
     },
   },
-  template: '<a href="#" @click.prevent="log()"><slot /></a>',
+  template: `<a href="#" @click.prevent="log()"><slot /></a>`,
 });
 
-Vue.component('nuxt', {
+Vue.component(`nuxt`, {
   template: `<router-view />`
 });
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
   controls: { expanded: true },
 }

@@ -6,9 +6,9 @@ import Navigation from './index.vue';
   component={Navigation}
   argTypes={{
     list: {
-      description: 'a set of items consisting of path and label for navigation',
+      description: `a set of items consisting of path and label for navigation`,
       control: {
-        type: 'object'
+        type: `object`
       }
     }
   }}
@@ -37,7 +37,7 @@ export const Template = (args, { argTypes }) => ({
       list: [
         {path: `path1`, label: `링크1`}, {path: `path2`, label: `링크2`}
       ],
-      headingContent: '메인 내비게이션',
+      headingContent: `메인 내비게이션`,
       isHeadingVisuallyHidden: false
     }}
   >

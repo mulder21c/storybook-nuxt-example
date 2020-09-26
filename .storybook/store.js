@@ -1,5 +1,4 @@
 import Vuex from 'vuex';
-
 import main from '@/store';
 import navigation from '@/store/navigation';
 
@@ -16,7 +15,7 @@ const store = new Vuex.Store({
 if (store._actions && store._actions.nuxtServerInit) {
   try {
     (async () => {
-      await store.dispatch('nuxtServerInit');
+      await store.dispatch(`nuxtServerInit`);
     })();
   } catch (err) {
     throw err;

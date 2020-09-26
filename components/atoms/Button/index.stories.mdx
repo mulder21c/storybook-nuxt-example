@@ -7,14 +7,14 @@ import { action } from '@storybook/addon-actions';
   component={DefaultButton}
   argTypes={{
     type: {
-      description: 'value of type attribute for button element',
+      description: `value of type attribute for button element`,
       control: {
         type: `select`,
         options: [`button`, `submit`, `reset`],
       },
     },
     context: {
-      description: 'to be used context for button element',
+      description: `to be used context for button element`,
       control: {
         type: `select`,
         options: [`default`, `primary`, `secondary`],
@@ -27,7 +27,7 @@ export const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: {DefaultButton},
   methods: {
-    handleClick: action('button clicked'),
+    handleClick: action(`button clicked`),
   },
   template: `
     <default-button
