@@ -16,7 +16,7 @@ Vue.component(`nuxt-link`, {
       action(`link target`)(this.to);
     },
   },
-  template: `<a href="#" @click.prevent="log()"><slot /></a>`,
+  template: `<a :href="to" @click.prevent="log()"><slot /></a>`,
 });
 
 Vue.component(`nuxt`, {
