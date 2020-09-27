@@ -11,7 +11,7 @@ module.exports = {
     `@storybook/addon-essentials`,
     `@storybook/addon-a11y`,
   ],
-  webpackFinal: async (config) => {
+  webpackFinal: (config) => {
     config.resolve.alias[`@`] = rootPath;
     config.resolve.alias[`~`] = rootPath;
 
