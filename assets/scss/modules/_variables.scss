@@ -1,25 +1,5 @@
 $white: #fff;
 $black: #000;
-$colorSet: (
-  'default': (
-    'normal': #E5E6EC,
-    'hover': #D3D6DC,
-    'pressed': #BFC3CA,
-    'disabled': #F4F5F8,
-    'font': #727884,
-  ),
-  'primary': (
-    'normal': #FF583F,
-    'hover': #F04C33,
-    'pressed': #E0442D,
-    'disabled': #FFAB9F,
-    'font': $white,
-  ),
-  'secondary': (
-    'normal': #3EBCF1,
-    'hover': #37B1E4,
-    'pressed': #239FD6,
-    'disabled': #9EDDF8,
-    'font': $white,
-  )
-);
+$text: ('size': ('xsmall': 8px,'small': 12px,'base': 16px,'large': 24px,'xlarge': 32px,'xxlarge': 40px),'weight': ('light': 300,'regular': 400,'bold': 600,'exbold': 800));
+$colorSet: ('red': ('default': #ff583f),'yellow': ('default': #ffd80b),'blue': ('default': #497aa8),'grey': ('1': #fafafc,'2': #f4f5f8,'3': #edeef2,'4': #E5E6EC,'5': #d3d6dc,'6': #bfc3ca,'7': #a0a5ae,'8': #9096a1,'9': #808793,'10': #727884,'11': #585f6b,'12': #444951,'default': #f4f5f8));
+$buttonColorSet: ('default': ('normal': #E5E6EC,'hover': #D3D6DC,'pressed': #BFC3CA,'disabled': #F4F5F8,'content': #727884),'primary': ('normal': #FF583F,'hover': #F04C33,'pressed': #E0442D,'disabled': #FFAB9F,'content': #fff),'secondary': ('normal': #3EBCF1,'hover': #37B1E4,'pressed': #239FD6,'disabled': #9EDDF8,'content': #fff));

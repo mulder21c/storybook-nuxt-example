@@ -11,12 +11,15 @@
     "lint": "yarn lint:js",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prestorybook": "node convertJsonToSass",
+    "predev": "node convertJsonToSass"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.0",
     "@nuxtjs/style-resources": "^1.0.0",
     "@storybook/source-loader": "^6.0.21",
+    "lodash": "^4.17.20",
     "nuxt": "^2.14.0"
   },
   "devDependencies": {

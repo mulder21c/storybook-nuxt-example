@@ -1,3 +1,7 @@
+@function to-string($value: '') {
+  @return inspect($value);
+}
+
 @function map-deep-get($map, $keys...) {
   @each $key in $keys {
     $map: map-get($map, $key);
@@ -7,31 +11,58 @@
 
 @function map-has-keys($map, $keys...) {
   @each $key in $keys {
-    @if map-has-key($map, $key) {
-      @return true;
+    @if map-has-key($map, $key) == false {
+      @return false;
     }
+    $map: map-get($map, $key);
   }
-  @return false;
+  @return true;
+}
+
+@function font-size($Size: 'base', $TextConfig: $text) {
+  @if $Size == '' {
+    $Size: 'base'
+  }
+  @if map-has-keys($TextConfig, 'size', $Size) {
+    @return map-deep-get($TextConfig, 'size', $Size);
+  }
+  @else {
+    @error " ⚠ '#{$Size}' could be retrieved from font-size() !! ";
+  }
+}
+
+@function font-weight($Weight: 'regular', $TextConfig: $text) {
+  @if $Weight == '' {
+    $Weight: 'regular'
+  }
+  @if map-has-keys($TextConfig, 'weight', $Weight) {
+    @return map-deep-get($TextConfig, 'weight', $Weight);
+  }
+  @else {
+    @error " ⚠ '#{$Weight}' could be retrieved from font-weight() !! ";
+  }
 }
 
 
-@function getColor($ColorSet, $Category, $Color, $Type: null ) {
+@function getColor($Color, $Category, $Type: null, $ColorSet: $colorSet ) {
   $result: #fff;
+  $Category: to-string($Category);
 
   @if $Type == null {
-    @if map-has-keys($ColorSet, $Category, $Color) {
-      $result: map-deep-get($ColorSet, $Category, $Color);
+    @if map-has-keys($ColorSet, $Color, $Category) {
+      $result: map-deep-get($ColorSet, $Color, $Category);
     }
     @else {
-      @warn "no value could be retrieved from `#{$ColorSet}`. ";
+      @error " ⚠ no value could be retrieved from getColor('#{$Color}', '#{$Category}'). ";
     }
   }
   @else {
-    @if map-has-keys($ColorSet, $Category, $Color, $Type) {
-      $result: map-deep-get($ColorSet, $Category, $Color, $Type);
+    $Type: to-string($Type);
+    @if map-has-keys($ColorSet, $Color, $Category, $Type) {
+      $result: map-deep-get($ColorSet, $Color, $Category, $Type);
     }
     @else {
-      @warn "no value could be retrieved from `#{$ColorSet}`. ";
+      @error " ⚠ no value could be retrieved from getColor('#{$Color}', '#{$Category}', '#{$Type}'). ";
     }
   }
   @return $result;

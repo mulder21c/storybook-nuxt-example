@@ -10,10 +10,10 @@
   font-weight: 800;
   cursor: pointer;
 
-  @each $context, $colorMap in $colorSet {
+  @each $context, $colorMap in $buttonColorSet {
     &--#{$context} {
       background-color: map-get($colorMap, 'normal');
-      color: map-get($colorMap, 'font');
+      color: map-get($colorMap, 'content');
 
       &:hover,
       &:focus {
