@@ -1,0 +1,46 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import Palette from './index.vue';
+import flatMap from 'lodash/flatMap';
+const {colorSet} = require('@/css-variables.js');
+
+<Meta
+  title="Utils/colors"
+  component={Palette}
+  argTypes={{
+    color: {
+      control: {
+        type: `select`,
+        options: flatMap(colorSet, (item, color) => {
+          return flatMap(item, (val, category) => {
+            return `--${color}--${category}`;
+          })
+        })
+      }
+    }
+  }}
+/>
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: {Palette},
+  template: `
+    <palette :color="color" />
+  `,
+});
+
+# Defined Colors
+
+You can see how it appears by applying the color change.
+
+<Canvas>
+  <Story
+    name="Colors"
+    args = {{
+      color: ``
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+</Canvas>
+
+<ArgsTable story="Colors" />

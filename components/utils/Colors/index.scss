@@ -1,0 +1,28 @@
+.palette {
+  @include text('base', 'exbold', getColor('grey', 11));
+  @include flat-map-prop($colorSet, 'color');
+  @include flat-map-prop($colorSet, 'background-color', '.rect-angle');
+}
+.rect-angles {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.rect-angle {
+  background-color: $black;
+  margin: 10px;
+
+  &--small {
+    width: 50px;
+    height: 50px;
+  }
+  &--medium {
+    width: 100px;
+    height: 100px;
+  }
+  &--large {
+    width: 200px;
+    height: 200px;
+  }
+}

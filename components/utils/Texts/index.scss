@@ -1,0 +1,4 @@
+.text-box {
+  @include flat-map-prop(map-get($text, 'size'), 'font-size');
+  @include flat-map-prop(map-get($text, 'weight'), 'font-weight');
+}

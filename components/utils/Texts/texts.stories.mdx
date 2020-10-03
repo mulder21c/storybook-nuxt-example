@@ -1,0 +1,171 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import TextBox from './index.vue';
+import flatMap from 'lodash/flatMap';
+const {text: {size: fontSize, weight: fontWeight}} = require('@/css-variables.js');
+
+<Meta
+  title="Utils/Texts"
+  component={TextBox}
+  argTypes={{
+    content: {
+      control: {
+        type: `text`,
+      }
+    },
+    fontSize: {
+      control: {
+        type: 'select',
+        options: Object.keys(fontSize)
+      }
+    },
+    fontWeight: {
+      control: {
+        type: 'select',
+        options: Object.keys(fontWeight)
+      }
+    }
+  }}
+/>
+
+export const defaultText = `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+Aperiam recusandae vero quaerat ratione dolores harum quis delectus
+voluptas optio perspiciatis facere, reiciendis magnam aliquam amet quos
+laudantium odio hic quasi.`;
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: {TextBox},
+  template: `
+    <TextBox :content="content" :font-size="fontSize" :font-weight="fontWeight" />
+  `,
+});
+
+# Defined Text Properties
+
+Try select each properties.
+
+`font-family`까지 적용해보면 폰트별 `font-size`, `font-weight` 렌더링 차이를 확인 할
+수 있다.  
+(`나눔스퀘어`같이 특정 사이즈 이하에세 폰트가 뭉개지는걸 디자이너에게 굳이 설명하지 않아도, 
+직접 확인하게 할 수도 있...)
+
+<Canvas>
+  <Story
+    name="Texts"
+    args = {{
+      content: defaultText
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+</Canvas>
+
+<ArgsTable story="Texts" />
+
+## 사이즈별 비교
+
+`xsmall`, `small`, `base`, `large`, `xlarge`, `xxlarge`
+
+<Canvas>
+  <Story
+    name="Texts - xsmall"
+    args = {{
+      content: defaultText,
+      fontSize: `xsmall`
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+  <Story
+    name="Texts - small"
+    args = {{
+      content: defaultText,
+      fontSize: `small`
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+  <Story
+    name="Texts - base"
+    args = {{
+      content: defaultText,
+      fontSize: `base`
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+  <Story
+    name="Texts - large"
+    args = {{
+      content: defaultText,
+      fontSize: `large`
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+  <Story
+    name="Texts - xlarge"
+    args = {{
+      content: defaultText,
+      fontSize: `xlarge`
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+  <Story
+    name="Texts - xxlarge"
+    args = {{
+      content: defaultText,
+      fontSize: `xxlarge`
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+</Canvas>
+
+## 두께별 비교
+
+`light`, `regular`, `bold`, `exbold`
+
+<Canvas>
+  <Story
+    name="Texts - light"
+    args = {{
+      content: defaultText,
+      fontSize: `base`,
+      fontWeight: `light`
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+  <Story
+    name="Texts - regular"
+    args = {{
+      content: defaultText,
+      fontSize: `base`,
+      fontWeight: `regular`
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+  <Story
+    name="Texts - bold"
+    args = {{
+      content: defaultText,
+      fontSize: `base`,
+      fontWeight: `bold`
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+  <Story
+    name="Texts - exbold"
+    args = {{
+      content: defaultText,
+      fontSize: `base`,
+      fontWeight: `exbold`
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+</Canvas>

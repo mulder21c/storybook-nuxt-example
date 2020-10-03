@@ -61,3 +61,34 @@ This is default button component
 </Canvas>
 
 <ArgsTable story="DefaultButton" />
+
+
+`mdx`에서 아쉬운 것은 Story 작성을 위해 이와 같이 작성하도록 가이드를 주는데,
+
+```jsx
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { SomeComponent },
+  template: `
+    <some-component :prop="val" />
+  `,
+});
+
+<Canvas>
+  <Story
+    name="SomeComponent"
+    args = {{
+      prop: val,
+    }}
+  >
+    { Template.bind({}) }
+  </Story>
+</Canvas>
+```
+
+`Show code` 버튼을 눌렀을 때 노출되는 코드가 `Template` 함수 자체라는 것이다...
+
+`props`를 `Object.keys()`를 이용하지 말고, `.vue` 파일에서 복사해서 넣는게 더 나을지도
+모르겠다.  
+비교를 위해 `molecules/Links/LinkGroup`에 반영해 둠
